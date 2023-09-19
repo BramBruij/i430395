@@ -7,33 +7,32 @@ import (
 
 func main() {
 	
-    currentTime := timen.now{}
+    currentTime := time.Now()
 	dayPart := GetDayPart(currentTime)
 
-
 	if dayPart == "Nacht" {
-		fmt.Println(Wij zijn momenteel gesloten)
+		fmt.Println("Wij zijn momenteel gesloten")
 	}
 	if dayPart == "Morgen"{
-		fmt.Println(Welkom bij Fonteyn Vakantieparken)
+		fmt.Println("Welkom bij Fonteyn Vakantieparken")
 	}
 	if dayPart == "Middag"{
-		fmt.Println(Welkom bij Fonteyn Vakantieparken)
+		fmt.Println("Welkom bij Fonteyn Vakantieparken")
 	}
 	if dayPart == "Avond"{
-		fmt.Println(welkom bij Fonteyn Vakantieparken)
+		fmt.Println("welkom bij Fonteyn Vakantieparken")
 	}
 }
 
-func GetDayPart(time.Time) string{
+func GetDayPart(time time.Time) string{
 	currentHour := time.Hour()
-	if currentHour >= 7 && < 12 {
+	if currentHour >= 7 && currentHour < 12 {
 		return "Morgen"
 	}
-	if currentHour >= 12 && < 18 {
+	if currentHour >= 12 && currentHour < 18 {
 		return "Middag"
 	}
-	if currentHour >= 18 && < 23 {
+	if currentHour >= 18 && currentHour < 23 {
 		return "Avond"
 	}
 	return "Nacht"
