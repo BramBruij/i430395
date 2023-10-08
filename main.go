@@ -15,6 +15,8 @@ func init() {
 	flag.Parse()
 	if kentekenNummer == "" {
 		fmt.Println("Voer een kentekennummer in")
+		flag.Usage()
+		os.Exit(1)
 	}
 }
 
@@ -48,20 +50,20 @@ func main() {
 func CheckBoeking(kentekenNummer string) (Boeking, error) {
 	var boeking Boeking
 	boekingen := []Boeking{
-		{Naam: "Bram", KentekenNummer: "1-AAA-11"},
-		{Naam: "Peter", KentekenNummer: "1-BBB-11"},
+		{Name: "Bram", KentekenNummer: "1-AAA-11"},
+		{Name: "Peter", KentekenNummer: "1-BBB-11"},
 	}
 
-	for _, boeking := range boeking {
+	for _, boeking := range boekingen {
 		if boeking.KentekenNummer == kentekenNummer {
 			return boeking, nil
 		}
 	}
 
-	return boeking, fmt.Errorf("no reservation found for %v", kentekenNummer)
+	return boeking, fmt.Errorf("Geen reservatie gevonden voor %v", kentekenNummer)
 }
 
-func GetDayPart(time time.Time) string { Current
+func GetDayPart(time time.Time) string {
 	currentHour := time.Hour()
 	if currentHour >= 7 && currentHour < 12 {
 		return "Morgen"
@@ -80,8 +82,8 @@ type Boeking struct {
 	KentekenNummer string
 }
 
-type Vakantieparken struct{
-	Name string
-	Country string
-	bookingen []Boeking
+type Vakantieparken struct {
+	Name      string
+	Country   string
+	boekingen []Boeking
 }
